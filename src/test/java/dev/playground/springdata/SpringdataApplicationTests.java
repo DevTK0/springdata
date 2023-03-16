@@ -1,4 +1,4 @@
-package java.playground.springdata;
+package dev.playground.springdata;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
