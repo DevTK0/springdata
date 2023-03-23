@@ -1,5 +1,8 @@
 package dev.playground.springdata;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -12,12 +15,14 @@ import dev.playground.springdata.services.CustomerRepository;
 @SpringBootApplication
 public class SpringdataApplication {
 
-	public static final String[][] customers = {
-			{ "Jack", "Bauer" },
-			{ "Chloe", "O'Brian" },
-			{ "Kim", "Bauer" },
-			{ "David", "Palmer" },
-			{ "Michelle", "Dessler" }
+	public static final HashMap<String, String> customers = new HashMap<>() {
+		{
+			put("Jack", "Bauer");
+			put("Chloe", "O'Brian");
+			put("Kim", "Bauer");
+			put("David", "Palmer");
+			put("Michelle", "Dessler");
+		}
 	};
 	@Autowired
 	private CustomerRepository customerRepository;
@@ -29,8 +34,8 @@ public class SpringdataApplication {
 	@Bean
 	InitializingBean initializeDatabase() {
 		return () -> {
-			for (String[] customer : customers) {
-				customerRepository.save(new Customer(null, customer[0], customer[1]));
+			for (var customer : customers.entrySet()) {
+				customerRepository.save(new Customer(null, customer.getKey(), customer.getValue()));
 			}
 		};
 	}
