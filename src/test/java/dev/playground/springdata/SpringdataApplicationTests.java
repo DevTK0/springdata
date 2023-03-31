@@ -30,6 +30,7 @@ class SpringdataApplicationTests {
 			i++;
 		}
 		assertEquals(input.size(), i);
+		assertEquals(1, 2);
 	}
 
 }
