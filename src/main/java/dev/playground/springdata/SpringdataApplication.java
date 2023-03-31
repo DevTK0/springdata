@@ -1,7 +1,6 @@
 package dev.playground.springdata;
 
 import java.util.HashMap;
-import java.util.Map.Entry;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
